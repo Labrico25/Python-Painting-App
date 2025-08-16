@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+ <head>
+  <title>Paint App</title>
+  <link rel="icon" type="image/png" href="https://tse4.mm.bing.net/th/id/OIP.19zSgs_oQpeUywd1M2CAvgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js">></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script>
+   const colors = {{list_of_colors|safe}};
+      
+   let canvas_url = {{maybe_dataURL|safe}};
+      
+   let clearing = false; 
+      
+   let selected_color;
+      
+   let pop = false;
+      
+   let px = 2.5;
+  </script>   
+ </head>
+ <body>     
+  <div id="app">
+   <div id="modal"></div>   
+   <div class="upper_bar" id="upper-bar">
+    <div class="color-bar" id="color-opts">
+     <div id="scroll" class="scroll-down" style="background-color: white;">
+      <div id="to-populate" style="display: flex; gap: 6px;">
+       <script src="{{url_for('static', filename='js/populate-with-colors.js')}}" type="module"></script>
+      </div>
+     </div>
+    </div>
+    <div id="thickness" style="">
+     <input id="slider" class="vertical-range" type="range" min="1px" max="14" value="2.5" />   
+     <script>
+     const slider = document.getElementById('slider');
+         
+     slider.addEventListener('input', (e) => {
+         
+         let value = slider.value;
+         
+         px = value;
+     });
+     </script>
+    <div id="erase" class="rubber" style="cursor: pointer;">
+    <script>
+    function imgclick (e) {
+        clearing = true
+    }
+    </script>
+    <img src="{{url_for('static', filename='images/eraser_icon.png')}}" style="width: 50px; height: 60px;" onClick="imgclick()">
+    </div>
+    </div>
+    <div class="download" id="download-op">
+     <script src="{{url_for('static', filename='js/download-file.js')}}" type="module"></script>
+    </div>
+    <div class="new-file" id="new-canvas">
+    <script src="{{url_for('static', filename='js/new-file.js')}}" type="module"></script>
+    </div>
+    <canvas class="the-canvas" id="canvas">
+    <script>
+    const canvas = document.getElementById('canvas');
+        
+    const ctx = canvas.getContext('2d'); 
+        
+    const img = new Image();
+        
+    img.onload = (function () {
+        
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+    });
+        
+    img.src = canvas_url;
+    </script>
+    <script src="{{url_for('static', filename='js/canvas.js')}}" type="module"></script>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

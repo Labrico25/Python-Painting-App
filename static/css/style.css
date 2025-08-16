@@ -1,0 +1,47 @@
+.upper_bar {position: absolute;
+	    transform: translate(-8px, -10px);
+	    width: 1536px;
+	    height: 120px;
+        z-index: 0;
+	    background-image: url('https://tse4.mm.bing.net/th/id/OIP.KXNWADauCTwZTVqo4LUj6QHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');}
+
+.rubber {
+    width: 50px;
+    height: 60px;
+    transform: translate(500px, 28px);
+}
+
+.vertical-range {
+    width: 10px;
+    height: 70px;
+    direction: rtl;
+    writing-mode: Vertical-rl;
+    position: absolute;
+    transform: translate(450px, 25px)
+}
+
+
+.scroll-down {gap: 6px;
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 150px;
+	      max-height: 60px;
+	      overflow-y: auto;}
+
+
+.color-bar {position: absolute;
+	   transform: translate(250px, 30px);}
+
+
+.download {position: absolute;
+	  transform: translate(1250px, -20px);}
+
+
+.new-file {position: absolute;
+	  transform: translate(750px, -10px);}
+
+
+.the-canvas {position: absolute;
+        width: 1500px;
+        height: 525px;
+	    transform: translate(20px, 140px);}
